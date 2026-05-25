@@ -1,0 +1,24 @@
+# Render Blueprint — optional: import when creating a new Web Service
+services:
+  - type: web
+    name: ai-habit-tracker-api
+    runtime: node
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 30d
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CLIENT_URL
+        sync: false
